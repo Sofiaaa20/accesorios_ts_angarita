@@ -8,12 +8,15 @@ dotenv.config();
 import register from './routes/register';
 import auth from './routes/auth';
 import checkDatabaseConnection from "./config/dbHealtCheck";
+import profile  from "./routes/profile";
+
 
 const app = express().use(bodyParser.json());
 
 app.use('/register', register);
 app.use('/auth', auth);
-app.use(cookieParser())
+app.use(cookieParser());
+app.use('/profile', profile);
 
 checkDatabaseConnection()
   .then(() => {

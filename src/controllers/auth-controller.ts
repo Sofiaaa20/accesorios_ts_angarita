@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import UserRepository from '../repositories/UserRepository';
 const bcrypt = require("bcryptjs");
 import { Request, Response } from "express";
+import { generateToken } from '../helpers/jsonWebToken';
 
 
 let auth = async (req: Request, res: Response) => {
@@ -9,7 +10,6 @@ let auth = async (req: Request, res: Response) => {
         const {email, password} = req.body;
         const result:any = await UserRepository.login(req.body);
         const rows = result[0];
-      console.log(rows[0].password);
       
         
          if (rows.length > 0){
@@ -23,7 +23,7 @@ let auth = async (req: Request, res: Response) => {
              });
            }
          }
-         const token=jwt.sign({email: email}, "aretes", {expiresIn: "24h"})
+         const token = generateToken(email);
         return res.status(200).json({ 
           status: 'Correct password',
           token
@@ -34,6 +34,5 @@ let auth = async (req: Request, res: Response) => {
       }
 
 }
-
 
 export default auth;
