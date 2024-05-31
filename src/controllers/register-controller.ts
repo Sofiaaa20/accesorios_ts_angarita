@@ -4,8 +4,8 @@ import UserService from "../services/UserServices";
 
 let register = async (req: Request, res: Response) => {
   try {
-    const { email, nombres, apellidos, telefono, password } = req.body;
-    const user = new User(email, nombres, apellidos, telefono, password);
+    const {documento, nombres, apellidos, email, direccion, telefono, password} = req.body;
+    const user = new User(documento, nombres, apellidos, email, direccion, telefono, password);
     const result = await UserService.register(user);
     return res.status(201).send({
       status: "register ok",

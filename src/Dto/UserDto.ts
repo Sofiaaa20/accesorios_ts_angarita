@@ -1,24 +1,29 @@
 class User {
-    private _email: string;
+
+    private _documento: string;
     private _nombres: string;
     private _apellidos: string;
+    private _direccion: string;
+    private _email: string;
     private _telefono: string;
     private _password: string;
 
-    constructor(email: string, nombres: string, apellidos: string, telefono: string, password: string) {
-        this._email = email;
+    constructor(documento: string, nombres: string, apellidos: string, direccion: string, email: string, telefono: string, password: string) {
+        this._documento = documento;
         this._nombres = nombres;
         this._apellidos = apellidos;
+        this._direccion = direccion;
+        this._email = email;
         this._telefono = telefono;
         this._password = password;
     }
 
-    get email(): string {
-        return this._email;
+    get documento(): string {
+        return this._documento;
     }
 
-    set email(value: string) {
-        this._email = value;
+    set documento(value: string) {
+        this._documento = value;
     }
 
     get nombres(): string {
@@ -37,6 +42,21 @@ class User {
         this._apellidos = value;
     }
 
+    get email(): string {
+        return this._email;
+    }
+
+    set email(value: string) {
+        this._email = value;
+    }
+
+    get direccion(): string {
+        return this._direccion;
+    }
+
+    set direccion(value: string) {
+        this._direccion = value;
+    }
     get telefono(): string {
         return this._telefono;
     }

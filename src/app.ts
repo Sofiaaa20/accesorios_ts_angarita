@@ -6,15 +6,15 @@ dotenv.config();
 
 import register from './routes/register';
 import auth from './routes/auth';
+
 import checkDatabaseConnection from "./config/dbHealtCheck";
-import verifyToken from "./middleware/verify-token";
+//import verifyToken from "./middleware/verify-token";
 // import perfilController from "./controllers/profile-controller";
 
 const app = express().use(bodyParser.json());
 
 app.use('/register', register);
 app.use('/auth', auth);
-app.use(cookieParser());
 
 checkDatabaseConnection()
   .then(() => {
